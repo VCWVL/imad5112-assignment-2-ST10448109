@@ -23,50 +23,49 @@ class QuizQuestions : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
         }//end of viewCompat
+
+        // username from mainActivity
+        val username = intent.getStringExtra("username")
 
         //Code
 
-        //This allows for the userInterface to operate with the code
         val textQuestion = findViewById<TextView>(R.id.TextViewQuestion)
         val ButtonNext = findViewById<Button>(R.id.buttonNextQuestion)
         val RadiobuttonAnswersOne = findViewById<RadioGroup>(R.id.RadioButtonAnswers)
 
-        //Arrays of Questions and Answers
-        val scienceQuestions = arrayOf(
-            "What is the chemical synbol for water?",
-
-            "Which planet is known as the Red Planet?",
-
-            "What force keeps planets in orbit around the sun?",
-
-            "What gas do plants absorb fron the atmosphere?",
-
-            "What is the boling point of water at sea level?"
+        val ApartheidQuestions = arrayOf(
+            "Nelson Mandela release Question: What was the date that Nelson Mandela was released from prison after 27 years of incarceration?\n"+"Can you spot the date:",
+            "The first Democratic Elections Question:When did South Africa hold their first democratic elections which allowed citizens of all races to vote?\n" +"Which date made SA's history books:",
+            "The Soweto Uprising Question: What was the main cause of the Soweto Uprising on the 16 June 1976?\n"+"It was:",
+            "Desmond Tutu's Role Question: What was the role of the Archbishop Desmond Tutu play in post-apartheid South Africa?\n"+"The role of:",
+            "The Pass Laws Question: What was the \"pass laws\" during apartheid in South Africa?\n"+"Choose from the following:"
         )
 
         val answerChoices = arrayOf(
-            arrayOf("A: H20", "B: CO2", "C: 02"),
-
-            arrayOf("A: Venus", "B: Mars", "C: Jupiter"),
-
-            arrayOf("A: Hagnetisn", "B: Gravity", "C: Nuclear Force"),
-
-            arrayOf("A: Oxygen", "B: Carbon Dioxide", "C: Nitrogen"),
-
-            arrayOf("А: 160°C", "В: 0°C", "C: 50C")
+            arrayOf("A: 27 April 1994", "B: 11 February 1990", "C: 16 June 1976", "D: 5 December 2013"),
+            arrayOf("A: 16 June 1976", "B: 11 February 1990", "C: 27 April 1994", "D: 5 December 2018"),
+            arrayOf("A:  A protest against pass laws", "B: The opposition to the use of Afrikaans as a medium of instruction in all schools", "C: A demand for Nelson Mandela's release", "D: The celebration of a national holiday"),
+            arrayOf("A: The President of South Africa", "B: The head of the Truth and Reconciliation Commission", "C:  The Minister of Education", "D: The Chief Justice"),
+            arrayOf("A: Laws that allowed all citizens to vote", "B:  Regulations that required non-white South Africans to carry documents which authorized their presence in restricted areas", "C: Rules that permitted interracial marriages", "D:Policies that promoted equal employment opportunities ")
         )
         var userAnswers = arrayOfNulls<String>(5)
         val correctAnswers = arrayOf(
-            "A:H20",
-            "B:Mars",
-            "B:Gravity",
-            "B:Carbon Dioxide",
-            "A:100°C"
+            "B:11 February 1990",
+            "C:27 April 1994",
+            "B:The opposition to the use of Afrikaans as a medium of instruction in all schools",
+            "B:The head of the Truth and Reconciliation Commission",
+            "B:Regulations that required non-white South Africans to carry documents authorizing their presence in restricted areas"
         )
 
         var counter = 0
+
+        textQuestion.text = ApartheidQuestions[counter]
+
+        for (i in 0 until RadiobuttonAnswersOne.childCount) {
+            val radioButton = RadiobuttonAnswersOne.getChildAt(i) as RadioButton
+            radioButton.text = answerChoices[counter][i]
+        }
 
         ButtonNext.setOnClickListener {
 
@@ -82,7 +81,7 @@ class QuizQuestions : AppCompatActivity() {
             counter++
 
             if (counter < 5) {
-                textQuestion.text = scienceQuestions[counter]
+                textQuestion.text = ApartheidQuestions[counter]
 
                 for (i in 0 until RadiobuttonAnswersOne.childCount) {
                     val radioButton = RadiobuttonAnswersOne.getChildAt(i) as RadioButton
@@ -99,12 +98,15 @@ class QuizQuestions : AppCompatActivity() {
                     }
                 }
                 intent.putExtra("score", score)
+
+
+                //  send username to QuizAnswers
+                intent.putExtra("username", username)
                 startActivity(intent)
                 finish()
             }
 
-    }//next button
-        }//end of onCreate
+        }//next button
+    }//end of onCreate
 
-    }//end of quiz questions Activity
-
+}//end of quiz questions Activity

@@ -42,15 +42,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             //if the field is not empty then proceed to quiz questions screen
-                val intent = Intent(this, QuizQuestions::class.java).putExtra ("username",username)
-                startActivity(intent)
-                finish()
+            val intent = Intent(this, QuizQuestions::class.java).putExtra("username", username)
+            startActivity(intent)
+            finish()
 
 
-            }// end of button
-        }//end of onCreate
+        }// end of button
+    }//end of onCreate
 
-    }//end of mainActivity
+}//end of mainActivity
 
 
 

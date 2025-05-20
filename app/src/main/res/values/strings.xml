@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">QuizApp</string>
+    <string name="start">Start</string>
+    <string name="please_can_you_enter_a_username">Please can you enter a username</string>
+    <string name="welcome_to_the_quiz_app">welcome to the Quiz App</string>
+    <string name="questions">Questions</string>
+    <string name="next_question">Next Question</string>
+    <string name="b">B</string>
+    <string name="a">A</string>
+    <string name="c">C</string>
+    <string name="answer_a_short_quiz">Answer a Short Quiz</string>
+    <string name="this_is_your_score">This is Your Score</string>
+    <string name="_0">0</string>
+    <string name="exit_quiz">Exit Quiz</string>
 </resources>

@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import vcmsa.ci.quizapplication.R
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,16 +25,33 @@ class MainActivity : AppCompatActivity() {
         //Code
 
         //This allows for the userInterface to operate with the code
-         val editTextTextUsername = findViewById<EditText>(R.id.editTextTextUsername)
-         val buttonStart = findViewById<Button>(R.id.buttonStart)
+        val editTextTextUsername = findViewById<EditText>(R.id.editTextTextUsername)
+        val buttonStart = findViewById<Button>(R.id.buttonStart)
 
-        //Gather and input Data from whats declared on the UI
-        val username = editTextTextUsername.text.toString()
+        //start button
         buttonStart.setOnClickListener {
-            val intent = Intent(this, QuizQuestions::class.java )
-            startActivity(intent)
 
-        }// end of button
-    }//end of onCreate
+            //Gather and input Data from whats declared on the UI
+            val username = editTextTextUsername.text.toString()
 
-}//end of mainActivity
+
+            //error checking for an empty username
+            if (username.isEmpty()) {
+                editTextTextUsername.error = "Please enter a username"
+                return@setOnClickListener
+            }
+
+            //if the field is not empty then proceed to quiz questions screen
+                val intent = Intent(this, QuizQuestions::class.java).putExtra ("username",username)
+                startActivity(intent)
+                finish()
+
+
+            }// end of button
+        }//end of onCreate
+
+    }//end of mainActivity
+
+
+
+

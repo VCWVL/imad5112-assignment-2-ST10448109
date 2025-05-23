@@ -35,12 +35,18 @@ jobs:
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest
 
-      - name: Run instrumented tests (UI tests)
-        run: ./gradlew connectedDebugAndroidTest
+      - name: Run instrumented tests (UI tests) on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          profile: pixel
+          script: ./gradlew connectedDebugAndroidTest
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: |

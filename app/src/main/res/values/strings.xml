@@ -12,4 +12,5 @@
     <string name="this_is_your_score">This is Your Score</string>
     <string name="_0">0</string>
     <string name="exit_quiz">Exit Quiz</string>
+    <string name="radiobutton">RadioButton</string>
 </resources>

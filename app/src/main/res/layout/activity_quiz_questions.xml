@@ -7,110 +7,107 @@
     android:layout_height="match_parent"
     tools:context=".QuizQuestions">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/southafrican"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/background_android_fone"
-            tools:ignore="ContentDescription" />
+    <!-- TRUE Button -->
 
-        <TextView
-            android:id="@+id/textViewHeadingQuiz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/abeezee"
-            android:text="@string/answer_a_short_quiz"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+    <!-- FALSE Button -->
 
-        <TextView
-            android:id="@+id/TextViewQuestion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/abeezee"
-            android:text="Please choose a question that you would like to start with:"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHeadingQuiz" />
+    <!-- NEXT Button -->
 
-        <RadioGroup
-            android:id="@+id/RadioButtonAnswers"
-            android:layout_width="398dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TextViewQuestion">
+    <TextView
+        android:id="@+id/textViewHeadingQuiz"
+        android:layout_width="347dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="92dp"
+        android:background="@color/black"
+        android:fontFamily="@font/abeezee"
+        android:text="@string/answer_a_short_quiz"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                android:id="@+id/radioButtonanswer1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/a"
-                android:textSize="24sp"
-                tools:ignore="VisualLintButtonSize" />
+    <TextView
+        android:id="@+id/TextViewQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/abeezee"
+        android:text="Question goes here..."
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeadingQuiz" />
 
-            <RadioButton
-                android:id="@+id/radioButtonAnswer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/b"
-                android:textSize="24sp"
-                tools:ignore="VisualLintButtonSize" />
+    <Button
+        android:id="@+id/buttonTrue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/abeezee"
+        android:text="True"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextViewQuestion" />
 
-            <RadioButton
-                android:id="@+id/radioButtonanswer3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/c"
-                android:textSize="24sp"
-                tools:ignore="VisualLintButtonSize" />
-        </RadioGroup>
+    <Button
+        android:id="@+id/buttonFalse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/abeezee"
+        android:text="False"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonTrue" />
 
-        <Button
-            android:id="@+id/buttonNextQuestion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="70dp"
-            android:backgroundTint="@color/black"
-            android:fontFamily="@font/abeezee"
-            android:text="@string/next_question"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintButtonSize" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/buttonNextQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="124dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/abeezee"
+        android:text="@string/next_question"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

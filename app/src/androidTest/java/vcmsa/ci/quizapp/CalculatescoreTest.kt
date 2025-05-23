@@ -1,4 +1,4 @@
-package vcmsa.ci.quizapp.calculatescoretest
+package vcmsa.ci.quizapp
 
 import org.junit.Test
 import org.junit.experimental.runners.Enclosed

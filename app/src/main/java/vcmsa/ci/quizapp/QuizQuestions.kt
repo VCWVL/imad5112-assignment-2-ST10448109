@@ -32,11 +32,11 @@ class QuizQuestions : AppCompatActivity() {
 
         // Flashcard data
         val questions = arrayOf(
-            "Nelson Mandela was released from prison in 1990.",
-            "South Africa held its first democratic elections in 1985.",
-            "The Soweto Uprising was in response to school policies.",
-            "Desmond Tutu led the military during apartheid.",
-            "Pass Laws restricted movement of non-white citizens."
+            "\n \n \n Nelson Mandela was released from prison in 1990.",
+            "\n \n \n South Africa held its first democratic elections in 1985.",
+            "\n \n \n The Soweto Uprising was in response to school policies.",
+            "\n \n \n Desmond Tutu led the military during apartheid.",
+            "\n \n \n Pass Laws restricted movement of non-white citizens."
         )
 
         val answers = booleanArrayOf(
@@ -119,14 +119,22 @@ class QuizQuestions : AppCompatActivity() {
     // Custom Toast function for bigger, better feedback messages
     private fun showCustomToast(message: String) {
         val inflater = layoutInflater
-        val layout = inflater.inflate(R.layout.custom_correct_button, findViewById(android.R.id.content), false)
+        val layout = inflater.inflate(
+            R.layout.custom_correct_button,
+            findViewById(android.R.id.content),
+            false
+        )
         val textView = layout.findViewById<TextView>(R.id.textToast)
         textView.text = message
 
         with(Toast(applicationContext)) {
             duration = Toast.LENGTH_SHORT
             view = layout
-            setGravity(android.view.Gravity.BOTTOM or android.view.Gravity.CENTER_HORIZONTAL, 0, 200)
+            setGravity(
+                android.view.Gravity.BOTTOM or android.view.Gravity.CENTER_HORIZONTAL,
+                0,
+                200
+            )
             show()
         }
     }

@@ -2,14 +2,14 @@ name: Android CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
       ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 60
 
     steps:
@@ -22,17 +22,6 @@ jobs:
         distribution: 'temurin'
         java-version: 17
 
-    - name: Install Android SDK components
-      run: |
-        echo "y" | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
-        sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --update
-        sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \
-          "platform-tools" \
-          "platforms;android-30" \
-          "build-tools;30.0.3" \
-          "emulator" \
-          "system-images;android-30;google_apis;x86_64"
-
     - name: Run emulator and instrumented tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
@@ -41,7 +30,8 @@ jobs:
         target: google_apis
         profile: pixel
         disable-animations: true
-        emulator-options: -no-snapshot-save -noaudio -no-boot-anim
+        emulator-options: -no-window -noaudio -no-boot-anim -gpu off -memory 2048
+        working-directory: .
         script: |
           adb wait-for-device
           boot_completed=""
@@ -50,4 +40,5 @@ jobs:
             echo "Waiting for emulator to boot... ($boot_completed)"
             sleep 5
           done
+          echo "Emulator booted"
           ./gradlew connectedDebugAndroidTest

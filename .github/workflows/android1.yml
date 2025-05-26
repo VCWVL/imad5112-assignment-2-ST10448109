@@ -22,22 +22,21 @@ jobs:
         distribution: 'temurin'
         java-version: 17
 
-    - name: Run emulator and instrumented tests
+    - name: Run emulator and tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 30
-        arch: x86_64
+        api-level: 29
         target: google_apis
+        arch: x86_64
         profile: pixel
         disable-animations: true
-        emulator-options: -no-window -noaudio -no-boot-anim -gpu off -memory 2048
-        working-directory: .
+        emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot
         script: |
           adb wait-for-device
+          echo "Waiting for emulator to boot..."
           boot_completed=""
           until [[ "$boot_completed" == "1" ]]; do
             boot_completed=$(adb shell getprop sys.boot_completed | tr -d '\r')
-            echo "Waiting for emulator to boot... ($boot_completed)"
             sleep 5
           done
           echo "Emulator booted"
